@@ -5,6 +5,7 @@ document.addEventListener('keydown', (event) => {
     if (!pressedKeys.has(key)) {
         pressedKeys.add(key);
         updatePressedKeys();
+        updateKeyLog(key); // Log the key pressed
     }
 });
 
@@ -16,6 +17,7 @@ document.addEventListener('keyup', (event) => {
     }
 });
 
+// Function to update the display of pressed keys
 function updatePressedKeys() {
     const elements = document.querySelectorAll('.key');
     elements.forEach(element => {
@@ -30,4 +32,10 @@ function updatePressedKeys() {
             element.classList.remove('pressed');
         }
     });
+}
+
+// Function to log the key pressed
+function updateKeyLog(key) {
+    const logContainer = document.getElementById('key-log');
+    logContainer.textContent += key + ' '; // Append key to the log with space
 }
