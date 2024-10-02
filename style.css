@@ -29,7 +29,8 @@ body {
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
-    display: block;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     text-align: center;
     align-items: center;
@@ -99,8 +100,7 @@ body {
     border-top: 1px solid #ccc;
     padding-top: 10px;
 }
-#clear-log-btn {
-    margin-top: 20px;
+.button {
     padding: 10px 20px;
     font-size: 16px;
     background-color: #4CAF50;
@@ -121,9 +121,77 @@ body {
 }
 
 .secondary {
-    display: block; /* Ensures it takes a full line */
     font-size: 0.7em; /* Adjust size as needed */
     color: #999; /* Light grey color for secondary keys */
     text-align: center; /* Center the secondary key */
     margin-top: 2px; /* Add some space above the secondary key */
+}
+
+
+.controls {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    margin-top: 20px; /* Add margin above the controls for spacing */
+}
+
+.control-item{
+    margin-left: 20px;
+    margin-right: 20px;
+
+}
+/* The switch container */
+.switch {
+    display: flex; /* Use flexbox to arrange items */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align items horizontally */
+    width: 60px;
+}
+
+/* Hide default checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    cursor: pointer;
+    height: 34px; /* Set the height */
+    width: 100%; /* Use full width of the container */
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+    position: relative; /* Allow the slider to take its natural position */
+    display: flex; /* Center the toggle */
+}
+
+/* The slider knob */
+.slider:before {
+    content: "";
+    position: absolute;
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+/* Checkbox checked state */
+input:checked + .slider {
+    background-color: #4CAF50;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Optional label under the slider */
+.slider-label {
+    font-size: 16px;
+    color: #333;
+    margin-top: 8px; /* Add margin to separate the label from the slider */
+    text-align: center; /* Center align the text */
 }
