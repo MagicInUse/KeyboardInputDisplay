@@ -8,6 +8,93 @@ body {
     margin: 0;
 }
 
+.mouse-container {
+    transform: translate(25%, 25%);
+}
+
+.mouse {
+    width: 180px;
+    height: 300px;
+    background-color: #333;
+    border-radius: 50% 50% 40% 40%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.mouse::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    background-color: #fff;
+    border-radius: 50% 50% 40% 40%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.mouse::after {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    width: 80%;
+    height: 80%;
+    background-color: #222;
+    border-radius: 50%;
+    transform: translateX(-50%);
+}
+
+.mouse-button {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #555;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.mouse-button[data-button="Left"] {
+    left: 15px;
+    top: 20px;
+    height: 100px;
+    background-color: #111;
+    border-radius: 70% 70% 70% 70%;
+    transform: translateY(-50%);
+    transform: rotate(25deg);
+}
+
+.mouse-button[data-button="Right"] {
+    right: 15px;
+    top: 20px;
+    height: 100px;
+    background-color: #111;
+    border-radius: 70% 70% 70% 70%;
+    transform: translateY(-50%);
+    transform: rotate(-25deg);
+}
+
+.mouse-button[data-button="Middle"] {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    background-color: #00ec00;
+    border-radius: 50% 50% 40% 40%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
 .keyboard {
     display: flex;
     flex-direction: column;
@@ -56,11 +143,11 @@ body {
 }
 
 .key.wide {
-    flex: 0 0 90px; /* 50px width + 10px margin-right + 50px width */
+    flex: 1 0 90px; /* 50px width + 10px margin-right + 50px width */
 }
 
 .key.extra-wide {
-    flex: 0 0 130px; /* 50px width + 10px margin-right + 50px width + 10px margin-right + 50px width */
+    flex: 1 0 130px; /* 50px width + 10px margin-right + 50px width + 10px margin-right + 50px width */
 }
 
 .key.space {
