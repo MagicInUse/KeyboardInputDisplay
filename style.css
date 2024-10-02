@@ -23,6 +23,7 @@ body {
     margin-bottom: 10px;
 }
 
+
 .key {
     width: 50px;
     height: 50px;
@@ -40,10 +41,13 @@ body {
     cursor: pointer;
     transition: background-color 0.2s, transform 0.2s;
     margin-right: 10px;
-    line-height: 2.5rem;
+    line-height: 1rem;
 }
 .key.double{
     line-height: 1.5rem;
+}
+.key.blank{
+    visibility: hidden;
 }
 
 .key:last-child {
@@ -59,9 +63,22 @@ body {
     flex: 0 0 90px; /* 50px width + 10px margin-right + 50px width */
 }
 
+.key.wide-zero {
+    flex: 0 0 110px;
+}
+
 .key.extra-wide {
     flex: 0 0 130px; /* 50px width + 10px margin-right + 50px width + 10px margin-right + 50px width */
 }
+
+.key.tall {
+    height: 110px; /* Set the height for tall keys */
+    overflow: visible; /* Allow overflow */
+    margin-bottom: -70px; /* Adjust to visually center it or prevent row expansion */
+    flex-shrink: 0; /* Prevent shrinking of the tall key */
+    pointer-events: auto; /* Ensure it captures click events */
+}
+
 
 .key.space {
     flex: 0 0 270px; /* 50px width + 10px margin-right + 50px width + 10px margin-right + 50px width + 10px margin-right + 50px width + 10px margin-right + 50px width */
@@ -87,6 +104,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center; /* Center the keyboard and log horizontally */
+}
+.keyboard-container{
+display: flex;
+flex-direction: row;
 }
 
 #key-log {
