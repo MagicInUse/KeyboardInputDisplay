@@ -8,6 +8,7 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+    <!-- Mouse container -->
     <div class="mouse-container">
         <div class="mouse">
             <div class="mouse-button" data-button="Left"></div>
@@ -18,9 +19,11 @@
         </div>
         <!-- TODO: add a tail to the mouse for fun :) -->
     </div>
+    <!-- Keyboard container -->
     <div class="container">
         <div class="keyboard-container">
             <div class="keyboard board-all">
+                <!-- Function keys row -->
                 <div class="row board-65">
                     <div class="key" data-key="Escape">esc</div>
                     <div class="spacer-sml"></div>
@@ -40,6 +43,7 @@
                     <div class="key" data-key="F12">F12</div>
                 </div>
                 <div class="row row-spacer"></div>
+                <!-- Number row -->
                 <div class="row board-all">
                     <div class="key double" data-key="Backquote">`<div class="secondary" data-key="Backquote">~</div></div>
                     <div class="key double" data-key="Digit1">1<div class="secondary" data-key="Digit1">!</div></div>
@@ -56,6 +60,7 @@
                     <div class="key double" data-key="Equal">=<div class="secondary" data-key="Equal">+</div></div>
                     <div class="key wide" data-key="Backspace">Backspace</div>
                 </div>
+                <!-- Additional keys... -->
                 <div class="row board-all">
                     <div class="key wide" data-key="Tab">Tab</div>
                     <div class="key" data-key="KeyQ">Q</div>
@@ -72,6 +77,7 @@
                     <div class="key double" data-key="BracketRight">]<div class="secondary" data-key="BracketRight">}</div></div>
                     <div class="key double" data-key="Backslash">\<div class="secondary" data-key="Backslash">|</div></div>
                 </div>
+                <!-- Additional keys... -->
                 <div class="row board-all">
                     <div class="key wide" data-key="CapsLock">Caps Lock</div>
                     <div class="key" data-key="KeyA">A</div>
@@ -87,6 +93,7 @@
                     <div class="key double" data-key="Quote">'<div class="secondary" data-key="Quote">"</div></div>
                     <div class="key extra-wide" data-key="Enter">Enter</div>
                 </div>
+                <!-- Additional keys... -->
                 <div class="row board-all">
                     <div class="key extra-wide" data-key="ShiftLeft">Shift</div>
                     <div class="key" data-key="KeyZ">Z</div>
@@ -100,6 +107,7 @@
                     <div class="key double" data-key="Slash">/<div class="secondary" data-key="Slash">?</div></div>
                     <div class="key extra-wide" data-key="ShiftRight">Shift</div>
                 </div>
+                <!-- Additional keys... -->
                 <div class="row board-all">
                     <div class="key wide" data-key="ControlLeft">Ctrl</div>
                     <div class="key special" data-key="MetaLeft">🪟</div>
@@ -111,73 +119,88 @@
                     <div class="key wide" data-key="ControlRight">Ctrl</div>
                 </div>
             </div>
+            <!-- Navigation cluster -->
             <div id="navigation-cluster" class="keyboard board-100">
+                <!-- Navigation keys -->
                 <div class="row board-all">
                     <div class="key" data-key="PrintScreen">PRTSC</div>
                     <div class="key" data-key="ScrollLock">SCRLK</div>
                     <div class="key" data-key="Pause">PAUSE</div>                    
                 </div>
                 <div class="row row-spacer"></div>
+                <!-- Navigation keys -->
                 <div class="row board-all">
                     <div class="key" data-key="Insert">Insert</div>
                     <div class="key" data-key="Home">Home</div>
                     <div class="key" data-key="PageUp">Page Up</div>                    
                 </div>                
+                <!-- Navigation keys -->
                 <div class="row board-all">
                     <div class="key" data-key="Delete">Delete</div>
                     <div class="key" data-key="End">End</div>
                     <div class="key" data-key="PageDown">Page Down</div>
-                </div>                
+                </div>
+                <!-- Blank row -->
                 <div class="row row-blank">
                     <div class="key blank" data-key=""></div>
                 </div>
+                <!-- Navigation keys -->
                 <div class="row board-all">
                     <div class="key blank" data-key=""></div>
                     <div class="key" data-key="ArrowUp">↑</div>
                     <div class="key blank" data-key=""></div>
                 </div>
+                <!-- Navigation keys -->
                 <div class="row board-all">
                     <div class="key" data-key="ArrowLeft">←</div>
                     <div class="key" data-key="ArrowDown">↓</div>
                     <div class="key" data-key="ArrowRight">→</div>
                 </div>
             </div>
+            <!-- Numpad cluster -->
             <div id="numpad-cluster" class="keyboard board-100">
-                <div class="row row-blank">
+                <!-- Blank row -->
+                <div class="row row-blank"></div>
+                <div class="key blank" data-key=""></div>
+                    <!-- Key Row -->
+                    <div class="row board-all">
+                        <div class="key" data-key="NumLock">NUM LOCK</div>
+                        <div class="key" data-key="NumpadDivide">/</div>
+                        <div class="key" data-key="NumpadMultiply">*</div>
+                        <div class="key" data-key="NumpadSubtract">-</div>
                     </div>
-                    <div class="key blank" data-key=""></div>
-                        <div class="row board-all">
-                            <div class="key" data-key="NumLock">NUM LOCK</div>
-                            <div class="key" data-key="NumpadDivide">/</div>
-                            <div class="key" data-key="NumpadMultiply">*</div>
-                            <div class="key" data-key="NumpadSubtract">-</div>
-                        </div>
-                        <div class="row board-all">
-                            <div class="key" data-key="Numpad7">7</div>
-                            <div class="key" data-key="Numpad8">8</div>
-                            <div class="key" data-key="Numpad9">9</div>
-                            <div class="key tall" data-key="NumpadAdd">+</div>
-                        </div>
-                        <div class="row board-all">
-                            <div class="key" data-key="Numpad4">4</div>
-                            <div class="key" data-key="Numpad5">5</div>
-                            <div class="key" data-key="Numpad6">6</div>
-                            <div class="key blank" data-key=""></div>
-                        </div>
-                        <div class="row board-all">
-                            <div class="key" data-key="Numpad1">1</div>
-                            <div class="key" data-key="Numpad2">2</div>
-                            <div class="key" data-key="Numpad3">3</div>
-                            <div class="key tall" data-key="NumpadEnter">Enter</div>
-                        </div>
-                        <div class="row board-all">
-                            <div class="key wide-zero" data-key="Numpad0">0</div>
-                            <div class="key" data-key="NumpadDecimal">.</div>
-                            <div class="key blank" data-key=""></div>
-                        </div>
+                    <!-- Key Row -->
+                    <div class="row board-all">
+                        <div class="key" data-key="Numpad7">7</div>
+                        <div class="key" data-key="Numpad8">8</div>
+                        <div class="key" data-key="Numpad9">9</div>
+                        <div class="key tall" data-key="NumpadAdd">+</div>
+                    </div>
+                    <!-- Key Row -->
+                    <div class="row board-all">
+                        <div class="key" data-key="Numpad4">4</div>
+                        <div class="key" data-key="Numpad5">5</div>
+                        <div class="key" data-key="Numpad6">6</div>
+                        <div class="key blank" data-key=""></div>
+                    </div>
+                    <!-- Key Row -->
+                    <div class="row board-all">
+                        <div class="key" data-key="Numpad1">1</div>
+                        <div class="key" data-key="Numpad2">2</div>
+                        <div class="key" data-key="Numpad3">3</div>
+                        <div class="key tall" data-key="NumpadEnter">Enter</div>
+                    </div>
+                    <!-- Key Row -->
+                    <div class="row board-all">
+                        <div class="key wide-zero" data-key="Numpad0">0</div>
+                        <div class="key" data-key="NumpadDecimal">.</div>
+                        <div class="key blank" data-key=""></div>
                     </div>
                 </div>
+                </div>
+        <!-- Log container -->
         <div id="key-log"></div>
+        <!-- Controls for logging -->
         <div class="controls">
             <button id="clear-log-btn" class="button control-item">Clear Log</button>
             <label class="switch control-item ">

@@ -1,3 +1,4 @@
+/* General body styling */
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -8,10 +9,12 @@ body {
     margin: 0;
 }
 
+/* Mouse container styling */
 .mouse-container {
     transform: translate(25%, 25%);
 }
 
+/* Mouse styling */
 .mouse {
     width: 180px;
     height: 300px;
@@ -22,6 +25,7 @@ body {
     z-index: 1000;
 }
 
+/* Mouse middle button circle */
 .mouse::before {
     content: '';
     position: absolute;
@@ -35,6 +39,7 @@ body {
     z-index: 1;
 }
 
+/* Mouse inner circle */
 .mouse::after {
     content: '';
     position: absolute;
@@ -47,6 +52,7 @@ body {
     transform: translateX(-50%);
 }
 
+/* Mouse button styling */
 .mouse-button {
     position: absolute;
     width: 50px;
@@ -62,39 +68,72 @@ body {
     transition: background-color 0.3s, transform 0.3s;
 }
 
+/* General mouse button styling */
+.mouse-button[data-button="Left"],
+.mouse-button[data-button="Right"],
+.mouse-button[data-button="Middle"] {
+    position: absolute;
+    background-color: #00ec00;
+    display: flex;
+}
+
+/* Left mouse button */
 .mouse-button[data-button="Left"] {
     left: 15px;
-    top: 20px;
+    top: 63px;
+    width: 50px;
     height: 100px;
-    background-color: #111;
     border-radius: 70% 70% 70% 70%;
-    transform: translateY(-50%);
-    transform: rotate(25deg);
+    transform: translateY(-50%) rotate(25deg);
 }
 
+/* Right mouse button */
 .mouse-button[data-button="Right"] {
     right: 15px;
-    top: 20px;
+    top: 63px;
+    width: 50px;
     height: 100px;
-    background-color: #111;
     border-radius: 70% 70% 70% 70%;
-    transform: translateY(-50%);
-    transform: rotate(-25deg);
+    transform: translateY(-50%) rotate(-25deg);
 }
 
+/* Middle mouse button */
 .mouse-button[data-button="Middle"] {
-    display: none;
-    position: absolute;
     top: 40px;
     left: 50%;
     width: 25px;
     height: 25px;
-    background-color: #00ec00;
-    border-radius: 50% 50% 40% 40%;
+    border-radius: 50%;
     transform: translateX(-50%);
     z-index: 1;
 }
 
+/* General mouse wheel styling */
+.mouse-wheel[data-wheel="Up"],
+.mouse-wheel[data-wheel="Down"] {
+    width: 5;
+    height: 5;
+    border-left: 12.5px solid transparent;
+    border-right: 12.5px solid transparent;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Mouse wheel up arrow */
+.mouse-wheel[data-wheel="Up"] {
+    top: 17px;
+    border-bottom: 18px solid #00ec00;
+}
+
+/* Mouse wheel down arrow */
+.mouse-wheel[data-wheel="Down"] {
+    top: 71px; /* Adjust this value to position it just under the middle button */
+    border-top: 18px solid #00ec00;
+    z-index: 1; /* Ensure it is below the middle button */
+}
+
+/* Keyboard container styling */
 .keyboard {
     display: flex;
     flex-direction: column;
@@ -104,13 +143,14 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Row styling */
 .row {
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
 }
 
-
+/* Key styling */
 .key {
     width: 50px;
     height: 50px;
@@ -130,34 +170,44 @@ body {
     margin-right: 10px;
     line-height: 1rem;
 }
-.key.double{
+
+/* Double key styling */
+.key.double {
     line-height: 1.5rem;
 }
-.key.blank{
+
+/* Blank key styling */
+.key.blank {
     visibility: hidden;
 }
 
+/* Last key in row */
 .key:last-child {
     margin-right: 0;
 }
 
+/* Active key styling */
 .key:active {
     background-color: #ddd;
     transform: translateY(2px);
 }
 
+/* Wide key styling */
 .key.wide {
     flex: 1 0 90px; /* 50px width + 10px margin-right + 50px width */
 }
 
+/* Wide zero key styling */
 .key.wide-zero {
     flex: 0 0 110px;
 }
 
+/* Extra wide key styling */
 .key.extra-wide {
     flex: 1 0 130px; /* 50px width + 10px margin-right + 50px width + 10px margin-right + 50px width */
 }
 
+/* Tall key styling */
 .key.tall {
     height: 110px; /* Set the height for tall keys */
     overflow: visible; /* Allow overflow */
@@ -166,37 +216,45 @@ body {
     pointer-events: auto; /* Ensure it captures click events */
 }
 
-
+/* Space key styling */
 .key.space {
     flex: 0 0 270px; /* 50px width + 10px margin-right + 50px width + 10px margin-right + 50px width + 10px margin-right + 50px width + 10px margin-right + 50px width */
 }
 
-.key.special{
+/* Special key styling */
+.key.special {
     width: 50px;
     height: 50px;
     line-height: 3rem;
     font-size: 20px;
 }
 
+/* Main pressed key styling */
 .key.main-pressed {
     background-color: #00ec00;
-    transition: backround-color 0.2s;
-}
-.key.secondary-pressed {
-    background-color: #00ffff;
-    transition: backround-color 0.2s;
+    transition: background-color 0.2s;
 }
 
+/* Secondary pressed key styling */
+.key.secondary-pressed {
+    background-color: #00ffff;
+    transition: background-color 0.2s;
+}
+
+/* Container styling */
 .container {
     display: flex;
     flex-direction: column;
     align-items: center; /* Center the keyboard and log horizontally */
 }
-.keyboard-container{
-display: flex;
-flex-direction: row;
+
+/* Keyboard container styling */
+.keyboard-container {
+    display: flex;
+    flex-direction: row;
 }
 
+/* Key log styling */
 #key-log {
     display: flex;
     margin: 0 auto;
@@ -208,6 +266,8 @@ flex-direction: row;
     border-top: 1px solid #ccc;
     padding-top: 10px;
 }
+
+/* Button styling */
 .button {
     padding: 10px 20px;
     font-size: 16px;
@@ -219,15 +279,18 @@ flex-direction: row;
     transition: background-color 0.3s;
 }
 
+/* Clear log button hover effect */
 #clear-log-btn:hover {
     background-color: #45a049; /* Darker green on hover */
 }
 
-.spacer-sml{
+/* Small spacer styling */
+.spacer-sml {
     margin-right: 15px;
     margin-left: 15px;
 }
 
+/* Secondary key styling */
 .secondary {
     font-size: 0.7em; /* Adjust size as needed */
     color: #999; /* Light grey color for secondary keys */
@@ -235,19 +298,20 @@ flex-direction: row;
     margin-top: 2px; /* Add some space above the secondary key */
 }
 
-
+/* Controls container styling */
 .controls {
     display: flex;
     align-items: flex-start; /* Align items to the top */
     margin-top: 20px; /* Add margin above the controls for spacing */
 }
 
-.control-item{
+/* Control item styling */
+.control-item {
     margin-left: 20px;
     margin-right: 20px;
-
 }
-/* The switch container */
+
+/* Switch container styling */
 .switch {
     display: flex; /* Use flexbox to arrange items */
     flex-direction: column; /* Stack items vertically */
@@ -262,7 +326,7 @@ flex-direction: row;
     height: 0;
 }
 
-/* The slider */
+/* Slider styling */
 .slider {
     cursor: pointer;
     height: 34px; /* Set the height */
@@ -274,7 +338,7 @@ flex-direction: row;
     display: flex; /* Center the toggle */
 }
 
-/* The slider knob */
+/* Slider knob styling */
 .slider:before {
     content: "";
     position: absolute;

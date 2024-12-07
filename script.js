@@ -38,6 +38,36 @@ function handleKeyUp(event) {
     }
 }
 
+// Initialize event listeners for mouse events
+document.querySelectorAll('.mouse-button, .mouse-wheel').forEach(button => {
+    button.addEventListener('mousedown', handleMouseDown);
+    button.addEventListener('mouseup', handleMouseUp);
+});
+
+// Function to handle mouse down events
+function handleMouseDown(event) {
+    const buttonType = event.target.getAttribute('data-button') || event.target.getAttribute('data-wheel');
+    if (buttonType) {
+        event.target.classList.add('main-pressed');
+        updateMouseLog(buttonType, 'pressed');
+    }
+}
+
+// Function to handle mouse up events
+function handleMouseUp(event) {
+    const buttonType = event.target.getAttribute('data-button') || event.target.getAttribute('data-wheel');
+    if (buttonType) {
+        event.target.classList.remove('main-pressed');
+        updateMouseLog(buttonType, 'released');
+    }
+}
+
+// Function to update mouse log
+function updateMouseLog(buttonType, action) {
+    const logContainer = document.getElementById('key-log');
+    logContainer.textContent += `${verboseLogging ? `${buttonType} (${action}) ` : `${buttonType} `}`;
+}
+
 // Function to update highlighted keys
 function updatePressedKeys(keyCode, keyValue) {
     const elements = document.querySelectorAll('.key, .double'); // Select all key elements
