@@ -1,9 +1,15 @@
 let verboseLogging = false; // Flag to toggle verbose logging
 const pressedKeys = new Set(); // Store currently pressed keys
 
-// Initialize event listeners for keydown and keyup
+// Initialize event listeners for keyboard keydown and keyup
 document.addEventListener('keydown', handleKeyDown);
 document.addEventListener('keyup', handleKeyUp);
+// Initialize event listeners for mouse events
+document.querySelectorAll('.mouse-button, .mouse-wheel').forEach(button => {
+    button.addEventListener('mousedown', handleMouseDown);
+    button.addEventListener('mouseup', handleMouseUp);
+});
+document.addEventListener('wheel', handleMouseWheel);
 
 // Function to handle keydown events
 function handleKeyDown(event) {
@@ -38,27 +44,40 @@ function handleKeyUp(event) {
     }
 }
 
-// Initialize event listeners for mouse events
-document.querySelectorAll('.mouse-button, .mouse-wheel').forEach(button => {
-    button.addEventListener('mousedown', handleMouseDown);
-    button.addEventListener('mouseup', handleMouseUp);
-});
-
 // Function to handle mouse down events
 function handleMouseDown(event) {
-    const buttonType = event.target.getAttribute('data-button') || event.target.getAttribute('data-wheel');
-    if (buttonType) {
-        event.target.classList.add('main-pressed');
+    const buttonType = event.button === 0 ? 'Left' : event.button === 1 ? 'Middle' : 'Right';
+    const buttonElement = document.querySelector(`.mouse-button[data-button="${buttonType}"]`);
+    if (buttonElement) {
+        pressedKeys.add(buttonType); // Track the button pressed
+        buttonElement.classList.add('main-pressed');
         updateMouseLog(buttonType, 'pressed');
     }
 }
 
 // Function to handle mouse up events
 function handleMouseUp(event) {
-    const buttonType = event.target.getAttribute('data-button') || event.target.getAttribute('data-wheel');
-    if (buttonType) {
-        event.target.classList.remove('main-pressed');
+    const buttonType = event.button === 0 ? 'Left' : event.button === 1 ? 'Middle' : 'Right';
+    const buttonElement = document.querySelector(`.mouse-button[data-button="${buttonType}"]`);
+    if (buttonElement) {
+        pressedKeys.delete(buttonType); // Remove the button from the pressed set
+        buttonElement.classList.remove('main-pressed');
         updateMouseLog(buttonType, 'released');
+    }
+}
+
+// Function to handle mouse wheel events
+function handleMouseWheel(event) {
+    const wheelDirection = event.deltaY < 0 ? 'wheel-up' : 'wheel-down';
+    const wheelElement = document.querySelector(`.mouse-wheel[data-wheel="${wheelDirection === 'wheel-up' ? 'Up' : 'Down'}"]`);
+    if (wheelElement) {
+        pressedKeys.add(wheelDirection); // Track the wheel action
+        wheelElement.classList.add('main-pressed');
+        updateMouseLog(wheelDirection, 'scrolled');
+        setTimeout(() => {
+            pressedKeys.delete(wheelDirection); // Remove the wheel action from the pressed set after a short delay
+            wheelElement.classList.remove('main-pressed');
+        }, 100);
     }
 }
 
@@ -70,10 +89,10 @@ function updateMouseLog(buttonType, action) {
 
 // Function to update highlighted keys
 function updatePressedKeys(keyCode, keyValue) {
-    const elements = document.querySelectorAll('.key, .double'); // Select all key elements
+    const elements = document.querySelectorAll('.key, .double, .mouse-button'); // Select all key and mouse button elements
 
     elements.forEach(element => {
-        const mainKeyCode = element.getAttribute('data-key'); // Get the data-key attribute
+        const mainKeyCode = element.getAttribute('data-key') || element.getAttribute('data-button'); // Get the data-key or data-button attribute
         const isMainKeyPressed = pressedKeys.has(mainKeyCode); // Check if the main key is pressed
 
         // Get the secondary key text if it exists

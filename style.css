@@ -73,7 +73,7 @@ body {
 .mouse-button[data-button="Right"],
 .mouse-button[data-button="Middle"] {
     position: absolute;
-    background-color: #00ec00;
+    background-color: #ffffff;
     display: flex;
 }
 
@@ -123,14 +123,32 @@ body {
 /* Mouse wheel up arrow */
 .mouse-wheel[data-wheel="Up"] {
     top: 17px;
-    border-bottom: 18px solid #00ec00;
+    border-bottom: 18px solid #ffffff;
 }
 
 /* Mouse wheel down arrow */
 .mouse-wheel[data-wheel="Down"] {
     top: 71px; /* Adjust this value to position it just under the middle button */
-    border-top: 18px solid #00ec00;
+    border-top: 18px solid #ffffff;
     z-index: 1; /* Ensure it is below the middle button */
+}
+
+/* Mouse pressed styling */
+.mouse-button:active {
+    background-color: #00ec00;
+    transform: scale(0.9);
+}
+
+/* Mouse pressed styling */
+.mouse-button:active,
+.mouse-button.main-pressed {
+    background-color: #00ec00;
+    transform: scale(0.9);
+}
+
+/* Mouse wheel active styling */
+.mouse-wheel.main-pressed {
+    border-color: #00ec00;
 }
 
 /* Keyboard container styling */
